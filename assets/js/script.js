@@ -1,7 +1,10 @@
 var timerEl = document.querySelector(".time");
-
-
 var timeRemaining = 75;
+
+var questionsAnswers
+
+
+
 
 function timer() {
     var secondsLeft = setInterval(function(){
