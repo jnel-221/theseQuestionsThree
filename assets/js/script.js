@@ -1,32 +1,61 @@
+//timer variables
 var timerEl = document.querySelector(".time");
 var timeRemaining = 76;
 
+//quiz variables 
+var startQuiz = document.querySelector("#start-button")
 var questionsAnswers = [
     {
         question: "Which of the following is NOT a Javascript data-type?",
-        choices: ["string", "object", "number", "boolean"],
-        answer: "object",
+        answers:  {
+            a:"string", 
+            b:"object", 
+            c:"number", 
+            d:"boolean",
+        },
+        correctAnswer: "b",
     },
     {
         question:"What is a function?",
-        choices: ["A method", "An object property", "A continuous loop", "A block of code that does something"],
-        answer: "A block of code that does something",
+        answers: {
+            a:"A method", 
+            b:"An object property", 
+            c: "A continuous loop", 
+            d:"A block of code that does something",
+        },
+        correctAnswer: "d",
     }, 
     {
         question:"The __ method is used to add an item to the end of an array: ",
-        choices: ["concat", "slice", "push", "splice"],
-        answer: "push",
+        answers: {
+            a:"concat", 
+            b:"slice", 
+            c:"push", 
+            d:"splice",
+        },
+        answer: "c",
     }, 
     {
         question:"Objects in Javascript can be used to store: ",
-        choices: ["arrays", "numbers", "functions", "all of the above"],
-        answer: "all of the above",
+        answers: {
+            a:"arrays", 
+            b:"numbers", 
+            c:"functions", 
+            d:"all of the above",
+        },
+        correctAnswer: "d",
     },
 ]
+//main quiz function
+//paint questions and answers to page
+function init(){
+    var question = document.querySelector("#question");
+    var ansList = document.querySelector("#answers");
+    var 
+}
 
 
-
-
+//main timer function, with time of quiz set at 75 seconds
 function timer() {
     var secondsLeft = setInterval(function(){
         timeRemaining--;
