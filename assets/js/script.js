@@ -10,8 +10,7 @@ function timer() {
         
         if(timeRemaining === 0) {
             clearInterval(secondsLeft);//this clears the setInterval()method.
-        //     scoreFunction();//calls function called 'sendMessage' after secondsLeft reaches zero
-          }
+        //     scoreFunction();//will call a function to display endgame form after timer runs out
 
     }, 1000);
     
