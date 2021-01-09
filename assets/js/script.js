@@ -11,7 +11,7 @@ function timer() {
         if(timeRemaining === 0) {
             clearInterval(secondsLeft);//this clears the setInterval()method.
         //     scoreFunction();//will call a function to display endgame form after timer runs out
-
+        };
     }, 1000);
     
 };
