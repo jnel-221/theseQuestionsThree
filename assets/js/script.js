@@ -1,10 +1,9 @@
 //timer variables
 var timerEl = document.querySelector(".time");
 var timeRemaining = 76;
+//opening section variables
 
 //quiz variables 
-
-
 var questionsAnswers = [
     {
         question: "Which of the following is NOT a Javascript data-type?",
@@ -34,13 +33,18 @@ var questionsAnswers = [
 ansList.innerHTML = '';
 
 //paints question and answer set to the page
-startQuiz.addEventListener("click", showQuestion(questionsAnswers.shift()));//method found on stack overflow, researched and applied by me
-
-function showQuestion(q){
+startQuiz.addEventListener("click", function(event){
+    event.preventDefault();
     //hide opening text
 
+    //call quiz-painting function & pass in 1st item of object array
+    showQuestion(questionsAnswers.shift());//method found on stack overflow, researched and applied in order to pass object into quiz function
     // start timer
     timer();
+});
+function showQuestion(q){
+    //hide opening text
+  
     //insert question text to h2
     quizQuestion.innerHTML = q.question;
 
@@ -60,11 +64,15 @@ function showQuestion(q){
          listEl.appendChild(btn);
 
         //event handler on answer buttons
-        btn.onclick = function () {
+        btn.onclick = function (event) {
+            event.preventDefault();
            var id = parseInt(this.getAttribute("data-id"));
            console.log(id); 
          if (id !== q.ansIdx){
              timeRemaining -= 10;
+
+         } else {
+            showQuestion(questionsAnswers.shift());
          }
         } 
     }
