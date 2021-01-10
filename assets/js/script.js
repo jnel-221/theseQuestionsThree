@@ -59,7 +59,8 @@ function showQuestion(q){
 
         //event handler on answer buttons
         btn.onclick = function () {
-            
+           var id = parseInt(this.getAttribute("data-id"));
+           console.log(id); 
         } 
     }
 
