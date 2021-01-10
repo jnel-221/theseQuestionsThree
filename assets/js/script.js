@@ -32,7 +32,7 @@ var questionsAnswers = [
 
 
     //quiz functions
-//paints question and answer set to the page
+
 startQuiz.addEventListener("click", function(event){
     event.preventDefault();
     //hide opening text
@@ -42,6 +42,7 @@ startQuiz.addEventListener("click", function(event){
     // start timer
     timer();
 });
+//paints question and answer set to the page, advances through object.
 function showQuestion(q){
      //insert question text to h2
     quizQuestion.innerHTML = q.question;
@@ -71,12 +72,54 @@ function showQuestion(q){
 
          } else {
             showQuestion(questionsAnswers.shift());
-         }
-        } 
-    }
+         };
+        };
+        
+    };
 
     
-}
+};
+
+ displayScore();
+//Function to display & store scores and initials
+function displayScore(){
+    //clear text from page
+    quizQuestion.innerHTML = "";
+    ansList.innerHTML = "";
+
+    //grab HTML elements
+    var allDone = document.querySelector("#save-score");
+    var enterScore = document.querySelector("#input");
+    
+    //create HTML elements
+    var scoreEl = document.createElement("p");
+    var inputLabel = document.createElement("label");
+    var inputEl = document.createElement("input");
+    var submitSpan = document.createElement("span");
+    var submitBtn = document.createElement("button");
+
+    //manipulate HTML elements
+    allDone.innerHTML = "All done!"
+    scoreEl.innerHTML = "Your final score is: " + timeRemaining;
+    inputLabel.innerHTML = "Enter Initials: ";
+    inputLabel.setAttribute("for", "initials");
+    inputEl.setAttribute("type", "text");
+    submitBtn.innerHTML = "Submit";
+    
+    //append elements to DOM
+    enterScore.appendChild(scoreEl);
+    enterScore.append(inputLabel);
+    enterScore.append(inputEl);
+    enterScore.appendChild(submitSpan);
+    submitSpan.appendChild(submitBtn);
+    
+    //event handler on submit button
+    submitBtn.onclick = function (event) {
+        event.preventDefault();
+        //call function that sets time and score tolocal storage
+        //open highScores.html page
+    }
+};
 
 
 //main timer function, with time of quiz set at 75 seconds
