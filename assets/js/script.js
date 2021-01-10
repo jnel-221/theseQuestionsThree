@@ -2,7 +2,7 @@
 var timerEl = document.querySelector(".time");
 var timeRemaining = 76;
 //opening section variables
-
+var introEl = document.querySelector("#intro");
 //quiz variables 
 var questionsAnswers = [
     {
@@ -29,23 +29,21 @@ var questionsAnswers = [
     var quizQuestion = document.querySelector("#question");
     var ansList = document.querySelector("#choices");
     var startQuiz = document.querySelector("#start-button")
-//quiz functions
-ansList.innerHTML = '';
 
+
+    //quiz functions
 //paints question and answer set to the page
 startQuiz.addEventListener("click", function(event){
     event.preventDefault();
     //hide opening text
-
+    introEl.classList.add("hide");
     //call quiz-painting function & pass in 1st item of object array
     showQuestion(questionsAnswers.shift());//method found on stack overflow, researched and applied in order to pass object into quiz function
     // start timer
     timer();
 });
 function showQuestion(q){
-    //hide opening text
-  
-    //insert question text to h2
+     //insert question text to h2
     quizQuestion.innerHTML = q.question;
 
     //clear previous answer buttons

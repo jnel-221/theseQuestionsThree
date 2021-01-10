@@ -6,3 +6,17 @@
 .hide {
   display: none;
 }
+
+h1,
+h2,
+p {
+  text-align: center;
+}
+
+button {
+  background-color: purple;
+  color: goldenrod;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+}
