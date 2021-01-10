@@ -3,55 +3,67 @@ var timerEl = document.querySelector(".time");
 var timeRemaining = 76;
 
 //quiz variables 
-var startQuiz = document.querySelector("#start-button")
+
+
 var questionsAnswers = [
     {
         question: "Which of the following is NOT a Javascript data-type?",
-        answers:  {
-            a:"string", 
-            b:"object", 
-            c:"number", 
-            d:"boolean",
-        },
-        correctAnswer: "b",
+        answers:  ["string", "object", "number", "boolean"],
+        ansIdx: 1,
     },
     {
         question:"What is a function?",
-        answers: {
-            a:"A method", 
-            b:"An object property", 
-            c: "A continuous loop", 
-            d:"A block of code that does something",
-        },
-        correctAnswer: "d",
+        answers: ["A method", "An object property", "A continuous loop", "A block of code that does something"],
+        ansIdx: 3,
     }, 
     {
         question:"The __ method is used to add an item to the end of an array: ",
-        answers: {
-            a:"concat", 
-            b:"slice", 
-            c:"push", 
-            d:"splice",
-        },
-        answer: "c",
+        answers: ["concat", "slice", "push", "splice"],
+        ansIdx: 2,
     }, 
     {
         question:"Objects in Javascript can be used to store: ",
-        answers: {
-            a:"arrays", 
-            b:"numbers", 
-            c:"functions", 
-            d:"all of the above",
-        },
-        correctAnswer: "d",
+        answers: ["arrays", "numbers", "functions", "all of the above"],
+        ansIdx: 3,
     },
 ]
-//main quiz function
-//paint questions and answers to page
-function init(){
-    var question = document.querySelector("#question");
-    var ansList = document.querySelector("#answers");
-    var 
+    var quizQuestion = document.querySelector("#question");
+    var ansList = document.querySelector("#choices");
+    var startQuiz = document.querySelector("#start-button")
+//quiz functions
+ansList.innerHTML = '';
+
+//paints question and answer set to the page
+startQuiz.addEventListener("click", showQuestion(questionsAnswers.shift()));
+
+function showQuestion(q){
+    //hide opening text
+
+    //insert question text to h2
+    quizQuestion.innerHTML = q.question;
+
+    //clear previous answer buttons
+    ansList.innerHTML = '';
+
+    //for each answer in the answers array, create a button
+    //attach an onclick handler that will display next question
+    for(var i = 0; i < q.answers.length; i ++){
+        var listEl = document.createElement("p");
+        var btn = document.createElement("button");
+
+         btn.innerHTML = q.answers[i];
+         btn.setAttribute("data-id", i)
+
+         ansList.appendChild(listEl);
+         listEl.appendChild(btn);
+
+        //event handler on answer buttons
+        btn.onclick = function () {
+            
+        } 
+    }
+
+    
 }
 
 
