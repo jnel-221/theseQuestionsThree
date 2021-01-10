@@ -34,11 +34,13 @@ var questionsAnswers = [
 ansList.innerHTML = '';
 
 //paints question and answer set to the page
-startQuiz.addEventListener("click", showQuestion(questionsAnswers.shift()));
+startQuiz.addEventListener("click", showQuestion(questionsAnswers.shift()));//method found on stack overflow, researched and applied by me
 
 function showQuestion(q){
     //hide opening text
 
+    // start timer
+    timer();
     //insert question text to h2
     quizQuestion.innerHTML = q.question;
 
@@ -61,6 +63,9 @@ function showQuestion(q){
         btn.onclick = function () {
            var id = parseInt(this.getAttribute("data-id"));
            console.log(id); 
+         if (id !== q.ansIdx){
+             timeRemaining -= 10;
+         }
         } 
     }
 
@@ -81,4 +86,3 @@ function timer() {
     }, 1000);
     
 };
-timer();
