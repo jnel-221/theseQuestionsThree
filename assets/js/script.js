@@ -5,6 +5,8 @@ var timeRemaining = 76;
 var highScores = [];
 //opening section variables
 var introEl = document.querySelector("#intro");
+var quizEl = document.querySelector("#quiz");
+var endGameEl = document.querySelector("#endGame");
 //quiz variables 
 var questionsAnswers = [
     {
@@ -39,6 +41,7 @@ startQuiz.addEventListener("click", function(event){
     event.preventDefault();
     //hide opening text
     introEl.classList.add("hide");
+    quizEl.classList.remove("hide");
     //call quiz-painting function & pass in 1st item of object array
     showQuestion(questionsAnswers.shift());//method found on stack overflow, researched and applied in order to pass object into quiz function
     // start timer
@@ -120,10 +123,12 @@ function stopTimer(){
 
 //Function to display & scores and initials
 function displayScore(){
-    //clear text from page
+    //hide quiz, display final score
+    quizEl.classList.add("hide");
+    endGameEl.classList.remove("hide");
+    //clear last question
     quizQuestion.innerHTML = "";
     ansList.innerHTML = "";
-
     //grab HTML elements
     var allDone = document.querySelector("#save-score");
     var enterScore = document.querySelector("#input");
