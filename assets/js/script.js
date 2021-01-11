@@ -1,6 +1,8 @@
 //timer variables
 var timerEl = document.querySelector(".time");
 var timeRemaining = 76;
+//score variables
+var highScores = [];
 //opening section variables
 var introEl = document.querySelector("#intro");
 //quiz variables 
@@ -31,7 +33,7 @@ var questionsAnswers = [
     var startQuiz = document.querySelector("#start-button")
 
 
-    //quiz functions
+   
 
 startQuiz.addEventListener("click", function(event){
     event.preventDefault();
@@ -77,7 +79,6 @@ function showQuestion(q){
          }
 
          if (timeRemaining === 0) {
-             console.log(timeRemaining);
              displayScore();
          }
         };
@@ -87,14 +88,35 @@ function showQuestion(q){
     
 };
 
+//need to work on conditional for this, cause timer won't stop.
 function subtractTime(){
     if (timeRemaining > 0){
         timeRemaining -= 10;
-     } //else if (timeRemaining < 10) {
-    //     return;
-    // }
+     } 
     
 }
+
+
+
+//main timer function, with time of quiz set at 75 seconds
+function timer() {
+    var secondsLeft = setInterval(function(){
+        timeRemaining--;
+        timerEl.textContent = "Time: " + timeRemaining;
+        
+        if(timeRemaining === 0) {
+            clearInterval(secondsLeft);//this clears the setInterval()method.
+        // displayScore();//will call a function to display endgame form after timer runs out
+        } 
+        
+    }, 1000);
+   
+};
+
+// function that stops timer; not working yet
+function stopTimer(){
+    clearInterval();
+    }
 
 //Function to display & scores and initials
 function displayScore(){
@@ -129,39 +151,22 @@ function displayScore(){
     enterScore.appendChild(submitSpan);
     submitSpan.appendChild(submitBtn);
     
-    //event handler on submit button
+    // event handler on submit button
     submitBtn.onclick = function (event) {
         event.preventDefault();
-        //set time and score tolocal storage
-        var highScore = {
-            initials: inputEl.value,
+        
+        var userScore = {
             score: timeRemaining,
+            initials: inputEl.value.trim(),
         };
-        localStorage.setItem("user score", JSON.stringify(highScore));
+        highScores.push(userScore);
+        storeScores();
         //open highScores.html page
+        // location.href = "highScores.html"
     };
+    console.log(highScores);
 };
 
-
-
-
-
-//main timer function, with time of quiz set at 75 seconds
-function timer() {
-    var secondsLeft = setInterval(function(){
-        timeRemaining--;
-        timerEl.textContent = "Time: " + timeRemaining;
-        
-        if(timeRemaining === 0) {
-            clearInterval(secondsLeft);//this clears the setInterval()method.
-        // displayScore();//will call a function to display endgame form after timer runs out
-        } 
-        
-    }, 1000);
-   
+function storeScores(){
+    localStorage.setItem("user score", JSON.stringify(highScores));
 };
-
-// function that stops timer; not working yet
-function stopTimer(){
-    clearInterval();
-    }
