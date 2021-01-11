@@ -1,25 +1,56 @@
+body {
+  background-image: url("../images/background.jpg");
+}
+
 .time {
   float: right;
   margin-right: 50px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: x-large;
+  /* color: rgb(255, 196, 0); */
+  color: mediumspringgreen;
 }
 
 .hide {
   display: none;
 }
-
+.container {
+  background-color: rgba(255, 196, 0, 0.815);
+  width: 45%;
+  margin-top: 75px;
+  margin-left: 200px;
+  padding: 30px 50px 50px 50px;
+}
 h1,
 h2,
+label {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  color: rgb(10, 10, 102);
+}
+a {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: medium;
+  color: mediumspringgreen;
+}
 p {
-  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: medium;
+  color: rgb(10, 10, 102);
 }
 
 button {
-  background-color: purple;
-  color: goldenrod;
-  height: 35px;
-  font-size: 18px;
-  font-weight: bold;
+  background-color: rgba(10, 10, 102, 0.829);
+  /* color: rgb(255, 196, 0); */
+  color: mediumspringgreen;
+  font-family: "Open Sans", sans-serif;
+  font-size: medium;
+  font-weight: 700;
 }
+
 /* fonts
 font-family: 'Open Sans', sans-serif;
 light 300, regular 400, Bold 700
