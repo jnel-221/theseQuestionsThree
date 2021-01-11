@@ -88,7 +88,12 @@ function showQuestion(q){
 };
 
 function subtractTime(){
-    timeRemaining -= 10;
+    if (timeRemaining > 0){
+        timeRemaining -= 10;
+     } //else if (timeRemaining < 10) {
+    //     return;
+    // }
+    
 }
 
 //Function to display & scores and initials
@@ -127,15 +132,19 @@ function displayScore(){
     //event handler on submit button
     submitBtn.onclick = function (event) {
         event.preventDefault();
-        //call function that sets time and score tolocal storage
+        //set time and score tolocal storage
+        var highScore = {
+            initials: inputEl.value,
+            score: timeRemaining,
+        };
+        localStorage.setItem("user score", JSON.stringify(highScore));
         //open highScores.html page
-    }
+    };
 };
 
-// function that stops timer
-function stopTimer(){
-clearInterval();
-}
+
+
+
 
 //main timer function, with time of quiz set at 75 seconds
 function timer() {
@@ -143,13 +152,16 @@ function timer() {
         timeRemaining--;
         timerEl.textContent = "Time: " + timeRemaining;
         
-        if(timeRemaining <= 0) {
+        if(timeRemaining === 0) {
             clearInterval(secondsLeft);//this clears the setInterval()method.
         // displayScore();//will call a function to display endgame form after timer runs out
-        } else if (timeRemaining < 0) {
-            return;
-        }
+        } 
         
     }, 1000);
    
 };
+
+// function that stops timer; not working yet
+function stopTimer(){
+    clearInterval();
+    }
