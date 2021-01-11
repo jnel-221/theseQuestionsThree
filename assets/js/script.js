@@ -69,10 +69,17 @@ function showQuestion(q){
            console.log(id); 
          if (id !== q.ansIdx){
              timeRemaining -= 10;
-
-         } else {
+         } else if (questionsAnswers.length){
             showQuestion(questionsAnswers.shift());
-         };
+         } else { 
+            timerEl.textContent = "Time: " + timeRemaining;
+            displayScore();
+         }
+
+         if (timeRemaining === 0) {
+             
+             displayScore();
+         }
         };
         
     };
@@ -80,8 +87,7 @@ function showQuestion(q){
     
 };
 
- displayScore();
-//Function to display & store scores and initials
+//Function to display & scores and initials
 function displayScore(){
     //clear text from page
     quizQuestion.innerHTML = "";
@@ -105,6 +111,7 @@ function displayScore(){
     inputLabel.setAttribute("for", "initials");
     inputEl.setAttribute("type", "text");
     submitBtn.innerHTML = "Submit";
+    submitBtn.setAttribute("class", "submit-btn");
     
     //append elements to DOM
     enterScore.appendChild(scoreEl);
@@ -121,6 +128,10 @@ function displayScore(){
     }
 };
 
+// function that stops timer
+function stopTimer(){
+clearInterval();
+}
 
 //main timer function, with time of quiz set at 75 seconds
 function timer() {
@@ -130,8 +141,9 @@ function timer() {
         
         if(timeRemaining === 0) {
             clearInterval(secondsLeft);//this clears the setInterval()method.
-        //     scoreFunction();//will call a function to display endgame form after timer runs out
+        // displayScore();//will call a function to display endgame form after timer runs out
         };
+        
     }, 1000);
-    
+   
 };
