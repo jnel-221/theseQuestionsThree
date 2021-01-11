@@ -68,7 +68,7 @@ function showQuestion(q){
            var id = parseInt(this.getAttribute("data-id"));
            console.log(id); 
          if (id !== q.ansIdx){
-             timeRemaining -= 10;
+             subtractTime();
          } else if (questionsAnswers.length){
             showQuestion(questionsAnswers.shift());
          } else { 
@@ -77,7 +77,7 @@ function showQuestion(q){
          }
 
          if (timeRemaining === 0) {
-             
+             console.log(timeRemaining);
              displayScore();
          }
         };
@@ -86,6 +86,10 @@ function showQuestion(q){
 
     
 };
+
+function subtractTime(){
+    timeRemaining -= 10;
+}
 
 //Function to display & scores and initials
 function displayScore(){
@@ -139,10 +143,12 @@ function timer() {
         timeRemaining--;
         timerEl.textContent = "Time: " + timeRemaining;
         
-        if(timeRemaining === 0) {
+        if(timeRemaining <= 0) {
             clearInterval(secondsLeft);//this clears the setInterval()method.
         // displayScore();//will call a function to display endgame form after timer runs out
-        };
+        } else if (timeRemaining < 0) {
+            return;
+        }
         
     }, 1000);
    
