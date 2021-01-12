@@ -178,4 +178,11 @@ function displayScore(){
 
 function storeScores(){
     localStorage.setItem("user score", JSON.stringify(highScores));
+    renderScores();
 };
+
+function renderScores(){
+    location.href = "highScores.html" 
+
+    
+}
