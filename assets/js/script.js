@@ -176,6 +176,10 @@ function displayScore(){
 };
 
 function storeScores(){
+    var existingScores = JSON.parse(localStorage.getItem("user score")) || "";
+
+    highScores.push(existingScores);
+    console.log(highScores);
     localStorage.setItem("user score", JSON.stringify(highScores));
     changePage();   
 };
