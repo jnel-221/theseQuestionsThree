@@ -36,7 +36,7 @@ var questionsAnswers = [
     var startQuiz = document.querySelector("#start-button")
 
 
-   
+ 
 
 startQuiz.addEventListener("click", function(event){
     event.preventDefault();
@@ -49,6 +49,7 @@ startQuiz.addEventListener("click", function(event){
     timer();
     console.log(secondsLeft.value);
 });
+
 //paints question and answer set to the page, advances through object.
 function showQuestion(q){
      //insert question text to h2
@@ -178,11 +179,10 @@ function displayScore(){
 
 function storeScores(){
     localStorage.setItem("user score", JSON.stringify(highScores));
-    renderScores();
+    changePage();   
 };
 
-function renderScores(){
-    location.href = "highScores.html" 
+function changePage(){
+    location.href = "highScores.html";
+};
 
-    
-}

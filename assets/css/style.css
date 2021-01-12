@@ -37,7 +37,8 @@ a {
   font-size: medium;
   color: mediumspringgreen;
 }
-p {
+p,
+li {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: medium;
