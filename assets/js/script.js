@@ -165,10 +165,8 @@ function displayScore(){
     submitBtn.onclick = function (event) {
         event.preventDefault();
         
-        var userScore = {
-            score: timeRemaining,
-            initials: inputEl.value.trim(),
-        };
+        var userScore = inputEl.value.trim() + " - " + timeRemaining;
+            
         highScores.push(userScore);
         storeScores();
         //open highScores.html page
