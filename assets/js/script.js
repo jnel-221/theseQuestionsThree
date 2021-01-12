@@ -1,6 +1,7 @@
 //timer variables
 var timerEl = document.querySelector(".time");
 var timeRemaining = 76;
+var secondsLeft;
 //score variables
 var highScores = [];
 //opening section variables
@@ -46,6 +47,7 @@ startQuiz.addEventListener("click", function(event){
     showQuestion(questionsAnswers.shift());//method found on stack overflow, researched and applied in order to pass object into quiz function
     // start timer
     timer();
+    console.log(secondsLeft.value);
 });
 //paints question and answer set to the page, advances through object.
 function showQuestion(q){
@@ -95,9 +97,11 @@ function showQuestion(q){
 function subtractTime(){
     if (timeRemaining > 0){
         timeRemaining -= 10;
-     } 
+    } //else if (timeRemaining < 10) {
+    //      stopTimer();
+    //  }
     
-}
+};
 
 
 
@@ -119,7 +123,7 @@ function timer() {
 // function that stops timer; not working yet
 function stopTimer(){
     clearInterval();
-    }
+    };
 
 //Function to display & scores and initials
 function displayScore(){

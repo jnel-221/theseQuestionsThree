@@ -21,6 +21,8 @@ body {
   margin-top: 75px;
   margin-left: 200px;
   padding: 30px 50px 50px 50px;
+  border-color: mediumvioletred;
+  border-style: inset;
 }
 h1,
 h2,
