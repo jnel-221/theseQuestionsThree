@@ -82,11 +82,8 @@ function showQuestion(q){
          if (timeRemaining === 0) {
              displayScore();
          }
-        };
-        
-    };
-
-    
+        };  
+    };    
 };
 
 //need to work on conditional for this, cause timer won't stop.
@@ -97,8 +94,7 @@ function subtractTime(){
         timeRemaining = 1;
     }else {
         timeRemaining -= 10; 
-    }
-    
+    }  
 };
 
 //main timer function, with time of quiz set in timeRemaining--global variable
@@ -112,16 +108,15 @@ function timer() {
         // displayScore();//will call a function to display endgame form after timer runs out
         } 
         
-    }, 1000);
-   
+    }, 1000);  
 };
 
 // function that stops timer; not working yet
 function stopTimer(){
     clearInterval();
-    };
+};
 
-//Function to display & scores and initials
+//Function to display quiz results
 function displayScore(){
     
     quizEl.classList.add("hide");
@@ -167,7 +162,6 @@ function displayScore(){
 
         highScores.push(userScore); 
         storeScores();
-      debugger;  
         
       function storeScores(){
         var storedScores = JSON.parse(localStorage.getItem("user score")) || [];  
@@ -179,8 +173,7 @@ function displayScore(){
         
         console.log(storedScores);
       };
-    };
-    
+    }; 
 };
 
 function changePage(){
