@@ -23,6 +23,7 @@ clearBtn.addEventListener("click", function(event){
 })
 
 
+console.log(storedScores);
 init();
 function init (){
     if (storedScores !== null) {

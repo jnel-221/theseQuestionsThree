@@ -36,9 +36,7 @@ var questionsAnswers = [
     var ansList = document.querySelector("#choices");
     var startQuiz = document.querySelector("#start-button")
 
-
- 
-
+//quiz begins onlick of start button
 startQuiz.addEventListener("click", function(event){
     event.preventDefault();
    
@@ -102,8 +100,6 @@ function subtractTime(){
     }
     
 };
-
-
 
 //main timer function, with time of quiz set in timeRemaining--global variable
 function timer() {
@@ -186,7 +182,6 @@ function displayScore(){
     };
     
 };
-
 
 function changePage(){
     location.href = "highScores.html";

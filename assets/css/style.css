@@ -8,8 +8,12 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: x-large;
+
   /* color: rgb(255, 196, 0); */
+  background: rgba(1, 1, 14, 0.664);
   color: mediumspringgreen;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: mediumvioletred;
 }
 
 .hide {
@@ -37,6 +41,10 @@ a {
   font-size: medium;
   color: mediumspringgreen;
 }
+a:hover {
+  color: mediumvioletred;
+}
+
 p,
 li {
   font-family: "Open Sans", sans-serif;
@@ -55,6 +63,12 @@ button {
   font-weight: 700;
 }
 
+button:hover {
+  color: mediumvioletred;
+  cursor: pointer;
+  /* -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: mediumspringgreen; */
+}
 /* fonts
 font-family: 'Open Sans', sans-serif;
 light 300, regular 400, Bold 700
