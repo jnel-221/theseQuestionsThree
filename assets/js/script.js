@@ -1,9 +1,10 @@
 //timer variables
 var timerEl = document.querySelector(".time");
-var timeRemaining = 76;
+var timeRemaining = 61;
 var secondsLeft;
 //score variables
 var highScores = [];
+var userScore;
 //opening section variables
 var introEl = document.querySelector("#intro");
 var quizEl = document.querySelector("#quiz");
@@ -40,26 +41,22 @@ var questionsAnswers = [
 
 startQuiz.addEventListener("click", function(event){
     event.preventDefault();
-    //hide opening text
+   
     introEl.classList.add("hide");
     quizEl.classList.remove("hide");
-    //call quiz-painting function & pass in 1st item of object array
-    showQuestion(questionsAnswers.shift());//method found on stack overflow, researched and applied in order to pass object into quiz function
-    // start timer
+    
+    showQuestion(questionsAnswers.shift());
+    
     timer();
     console.log(secondsLeft.value);
 });
 
 //paints question and answer set to the page, advances through object.
 function showQuestion(q){
-     //insert question text to h2
+     
     quizQuestion.innerHTML = q.question;
-
-    //clear previous answer buttons
     ansList.innerHTML = '';
 
-    //for each answer in the answers array, create a button
-    //attach an onclick handler that will display next question
     for(var i = 0; i < q.answers.length; i ++){
         var listEl = document.createElement("p");
         var btn = document.createElement("button");
@@ -98,15 +95,17 @@ function showQuestion(q){
 function subtractTime(){
     if (timeRemaining > 0){
         timeRemaining -= 10;
-    } //else if (timeRemaining < 10) {
-    //      stopTimer();
-    //  }
+    } else if (timeRemaining > 0 && timeRemaining <= 10) {
+        timeRemaining = 1;
+    }else {
+        timeRemaining -= 10; 
+    }
     
 };
 
 
 
-//main timer function, with time of quiz set at 75 seconds
+//main timer function, with time of quiz set in timeRemaining--global variable
 function timer() {
     var secondsLeft = setInterval(function(){
         timeRemaining--;
@@ -128,13 +127,13 @@ function stopTimer(){
 
 //Function to display & scores and initials
 function displayScore(){
-    //hide quiz, display final score
+    
     quizEl.classList.add("hide");
     endGameEl.classList.remove("hide");
-    //clear last question
+   
     quizQuestion.innerHTML = "";
     ansList.innerHTML = "";
-    //grab HTML elements
+    
     var allDone = document.querySelector("#save-score");
     var enterScore = document.querySelector("#input");
     
@@ -165,24 +164,29 @@ function displayScore(){
     submitBtn.onclick = function (event) {
         event.preventDefault();
         
-        var userScore = inputEl.value.trim() + " - " + timeRemaining;
-            
-        highScores.push(userScore);
+        var userScore = {
+            score : timeRemaining,
+            initials : inputEl.value.trim(), 
+        };
+
+        highScores.push(userScore); 
         storeScores();
-        //open highScores.html page
-        // location.href = "highScores.html"
+      debugger;  
+        
+      function storeScores(){
+        var storedScores = JSON.parse(localStorage.getItem("user score")) || [];  
+            
+            storedScores.push(userScore);
+            localStorage.setItem("user score", JSON.stringify(storedScores));
+            
+            changePage();   
+        
+        console.log(storedScores);
+      };
     };
-    console.log(highScores);
+    
 };
 
-function storeScores(){
-    var existingScores = JSON.parse(localStorage.getItem("user score")) || "";
-
-    highScores.push(existingScores);
-    console.log(highScores);
-    localStorage.setItem("user score", JSON.stringify(highScores));
-    changePage();   
-};
 
 function changePage(){
     location.href = "highScores.html";
