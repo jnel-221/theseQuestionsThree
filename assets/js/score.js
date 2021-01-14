@@ -1,9 +1,18 @@
-var storedScores = JSON.parse(localStorage.getItem("user score"));
-var highScoreEl = document.querySelector("#retrieved-scores");
+
+var highScoreList = document.querySelector("#retrieved-scores");
 var listEl = document.createElement("li");
 var btnEl = document.querySelector("#btns");
 var backBtn = document.createElement("button");
 var clearBtn = document.createElement("button");
+
+var storedScores = JSON.parse(localStorage.getItem("user score")) || [];
+var sortedScores = storedScores.sort((s1, s2) => (s1.score < s2.score)? 1 : (s1.score > s2.score)? -1 : 0);
+
+
+highScoreList.innerHTML = sortedScores.map(score =>{
+    return (`<li>${score.initials} - ${score.score}</li>`);
+}).join('');
+
 
 backBtn.innerHTML = "Retry";
 clearBtn.innerHTML = "Clear Highscores"
@@ -18,35 +27,34 @@ backBtn.addEventListener("click", function(event){
 
 clearBtn.addEventListener("click", function(event){
     event.preventDefault();
-    highScoreEl.innerHTML = "";
+    highScoreList.innerHTML = "";
     localStorage.clear();
 })
 
 
-console.log(storedScores);
 init();
 function init (){
     if (storedScores !== null) {
         highScores = storedScores; 
     };
-    renderScores();
+    // renderScores();
 };
     
-function renderScores(){
+// function renderScores(sortedScores){
     
- 
-    for (var i = 0; i < storedScores.length; i++){
-    var retrievedScore = storedScores[i];
+//     for (var i = 0; i < sortedScores.length; i ++){
     
+//     // console.log(x + ": " + storedScores[x])
     
-    listEl.textContent = retrievedScore;
-    listEl.setAttribute("data-index", i);
-    
-    highScoreEl.appendChild(listEl);
 
-    };
+//     listEl.textContent = sortedScores.initials[i] + sortedScores.score[i];
     
-};
+    
+//     highScoreEl.appendChild(listEl);
+
+//     };
+    
+// };
 
    
 
