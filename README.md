@@ -9,16 +9,16 @@
 ## Images
 
 Quiz begins when start button clicked.
-![Start Quiz](./images/main.png)
+![Start Quiz](./assets/images/main.png)
 
 User clicks through questions, time deducted for each wrong answer.
-![Quiz Question](./images/question.png)
+![Quiz Question](./assets/images/question.png)
 
 At end of quiz, user can save score and initials.
-![Enter Score](./images/score.png)
+![Enter Score](./assets/images/score.png)
 
 High scores displayed ranked from highest to lowest.
-![High Scores](./images/highScores.png)
+![High Scores](./assets/images/highScores.png)
 
 ## Link to quiz
 
