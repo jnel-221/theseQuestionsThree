@@ -1,14 +1,17 @@
 //timer variables
 var timerEl = document.querySelector(".time");
 var timeRemaining = 61;
+var secondsLeft;
 
 //score variables
 var highScores = [];
 var userScore;
+
 //opening section variables
 var introEl = document.querySelector("#intro");
 var quizEl = document.querySelector("#quiz");
 var endGameEl = document.querySelector("#endGame");
+
 //quiz variables 
 var questionsAnswers = [
     {
@@ -36,7 +39,7 @@ var questionsAnswers = [
     var ansList = document.querySelector("#choices");
     var startQuiz = document.querySelector("#start-button")
 
-//quiz begins onlick of start button
+//start quiz
 startQuiz.addEventListener("click", function(event){
     event.preventDefault();
    
@@ -45,11 +48,11 @@ startQuiz.addEventListener("click", function(event){
     
     showQuestion(questionsAnswers.shift());
     
-    timer();
-    console.log(secondsLeft.value);
+    secondsLeft = setInterval(timer,1000);  
 });
 
-//paints question and answer set to the page, advances through object.
+
+//paint quiz to page, advance through questions.
 function showQuestion(q){
      
     quizQuestion.innerHTML = q.question;
@@ -65,28 +68,25 @@ function showQuestion(q){
          ansList.appendChild(listEl);
          listEl.appendChild(btn);
 
-        //event handler on answer buttons
         btn.onclick = function (event) {
             event.preventDefault();
-           var id = parseInt(this.getAttribute("data-id"));
-           console.log(id); 
+
+        var id = parseInt(this.getAttribute("data-id"));
+            
          if (id !== q.ansIdx){
              subtractTime();
          } else if (questionsAnswers.length){
             showQuestion(questionsAnswers.shift());
          } else { 
             timerEl.textContent = "Time: " + timeRemaining;
+            stopTimer();
             displayScore();
          }
 
-         if (timeRemaining === 0) {
-             displayScore();
-         }
         };  
     };    
 };
 
-//need to work on conditional for this, cause timer won't stop.
 function subtractTime(){
     if (timeRemaining > 10){
         timeRemaining -= 10;
@@ -95,26 +95,22 @@ function subtractTime(){
     }  
 };
 
-//main timer function, with time of quiz set in timeRemaining--global variable
+//Timer-related variables and functions
 function timer() {
-    var secondsLeft = setInterval(function(){
-        timeRemaining--;
-        timerEl.textContent = "Time: " + timeRemaining;
-        
-        if(timeRemaining === 0) {
-            clearInterval(secondsLeft);//this clears the setInterval()method.
-        displayScore();//will call a function to display endgame form after timer runs out
-        } 
-        
-    }, 1000);  
+    timeRemaining--;
+    timerEl.textContent = "Time: " + timeRemaining;
+    
+    if(timeRemaining === 0) {
+    stopTimer();
+    displayScore();
+    }  
 };
 
-// function that stops timer; not working yet
 function stopTimer(){
-    clearInterval();
+    clearInterval(secondsLeft);
 };
 
-//Function to display quiz results
+//Display final score and store results
 function displayScore(){
     
     quizEl.classList.add("hide");
@@ -126,14 +122,12 @@ function displayScore(){
     var allDone = document.querySelector("#save-score");
     var enterScore = document.querySelector("#input");
     
-    //create HTML elements
     var scoreEl = document.createElement("p");
     var inputLabel = document.createElement("label");
     var inputEl = document.createElement("input");
     var submitSpan = document.createElement("span");
     var submitBtn = document.createElement("button");
 
-    //manipulate HTML elements
     allDone.innerHTML = "All done!"
     scoreEl.innerHTML = "Your final score is: " + timeRemaining;
     inputLabel.innerHTML = "Enter Initials: ";
@@ -142,14 +136,12 @@ function displayScore(){
     submitBtn.innerHTML = "Submit";
     submitBtn.setAttribute("class", "submit-btn");
     
-    //append elements to DOM
     enterScore.appendChild(scoreEl);
     enterScore.append(inputLabel);
     enterScore.append(inputEl);
     enterScore.appendChild(submitSpan);
     submitSpan.appendChild(submitBtn);
     
-    // event handler on submit button
     submitBtn.onclick = function (event) {
         event.preventDefault();
         
@@ -168,8 +160,6 @@ function displayScore(){
             localStorage.setItem("user score", JSON.stringify(storedScores));
             
             changePage();   
-        
-        console.log(storedScores);
       };
     }; 
 };

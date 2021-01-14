@@ -37,7 +37,7 @@ function init (){
     if (storedScores !== null) {
         highScores = storedScores; 
     };
-    // renderScores();
+    
 };
     
 // function renderScores(sortedScores){
