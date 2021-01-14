@@ -1,7 +1,7 @@
 //timer variables
 var timerEl = document.querySelector(".time");
 var timeRemaining = 61;
-var secondsLeft;
+
 //score variables
 var highScores = [];
 var userScore;
@@ -88,12 +88,10 @@ function showQuestion(q){
 
 //need to work on conditional for this, cause timer won't stop.
 function subtractTime(){
-    if (timeRemaining > 0){
+    if (timeRemaining > 10){
         timeRemaining -= 10;
-    } else if (timeRemaining > 0 && timeRemaining <= 10) {
+    } else if (timeRemaining <= 10){
         timeRemaining = 1;
-    }else {
-        timeRemaining -= 10; 
     }  
 };
 
@@ -105,7 +103,7 @@ function timer() {
         
         if(timeRemaining === 0) {
             clearInterval(secondsLeft);//this clears the setInterval()method.
-        // displayScore();//will call a function to display endgame form after timer runs out
+        displayScore();//will call a function to display endgame form after timer runs out
         } 
         
     }, 1000);  
