@@ -22,8 +22,9 @@ body {
 .container {
   background-color: rgba(181, 129, 241, 0.815);
   width: 45%;
-  margin-top: 75px;
-  margin-left: 200px;
+  /* margin-top: 75px;
+  margin-left: 75px; */
+  margin: 50px;
   padding: 30px 50px 50px 50px;
   border-color: mediumvioletred;
   border-style: inset;
@@ -69,7 +70,15 @@ button:hover {
   /* -webkit-text-stroke-width: 1.5px;
   -webkit-text-stroke-color: mediumspringgreen; */
 }
-/* fonts
-font-family: 'Open Sans', sans-serif;
-light 300, regular 400, Bold 700
- */
+
+@media screen and (max-width: 480px) {
+  h1,
+  h2,
+  label {
+    font-size: medium;
+  }
+
+  button {
+    font-size: x-small;
+  }
+}
