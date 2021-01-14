@@ -16,6 +16,9 @@ var endGameEl = document.querySelector("#endGame");
 var quizQuestion = document.querySelector("#question");
 var ansList = document.querySelector("#choices");
 var startQuiz = document.querySelector("#start-button");
+// var quizCntr = document.querySelector("mainQuiz");
+// var brkEl = document.createElement('br');
+// var msgEl = document.createElement('p');
 var questionsAnswers = [
     {
         question: "Which of the following is NOT a Javascript data-type?",
@@ -36,7 +39,7 @@ var questionsAnswers = [
         question:"Objects in Javascript can be used to store: ",
         answers: ["arrays", "numbers", "functions", "all of the above"],
         ansIdx: 3,
-    },
+    }
 ];
     
 
@@ -75,8 +78,11 @@ function showQuestion(q){
         var id = parseInt(this.getAttribute("data-id"));
             
          if (id !== q.ansIdx){
+            
              subtractTime();
          } else if (questionsAnswers.length){
+             
+            addTime();
             showQuestion(questionsAnswers.shift());
          } else { 
             timerEl.textContent = "Time: " + timeRemaining;
@@ -86,6 +92,22 @@ function showQuestion(q){
 
         };  
     };    
+};
+
+// function wrongAns(){
+//     msgEl.text = "NOPE! -10!";
+
+//     brkEl.appendChild(msgEl);
+//     quizCntr.appendChild(brkEl);
+// }
+
+// function rightAns() {
+//     msgEl.text = "Correct!  Keep it up!";
+//     brkEl.appendChild(msgEl);
+//     quizCntr.appendChild(brkEl);
+// }
+function addTime(){
+    timeRemaining += 10;
 };
 
 function subtractTime(){
