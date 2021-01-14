@@ -16,9 +16,7 @@ var endGameEl = document.querySelector("#endGame");
 var quizQuestion = document.querySelector("#question");
 var ansList = document.querySelector("#choices");
 var startQuiz = document.querySelector("#start-button");
-// var quizCntr = document.querySelector("mainQuiz");
-// var brkEl = document.createElement('br');
-// var msgEl = document.createElement('p');
+
 var questionsAnswers = [
     {
         question: "Which of the following is NOT a Javascript data-type?",
@@ -80,8 +78,7 @@ function showQuestion(q){
          if (id !== q.ansIdx){
             
              subtractTime();
-         } else if (questionsAnswers.length){
-             
+         } else if (questionsAnswers.length){  
             addTime();
             showQuestion(questionsAnswers.shift());
          } else { 
@@ -94,18 +91,6 @@ function showQuestion(q){
     };    
 };
 
-// function wrongAns(){
-//     msgEl.text = "NOPE! -10!";
-
-//     brkEl.appendChild(msgEl);
-//     quizCntr.appendChild(brkEl);
-// }
-
-// function rightAns() {
-//     msgEl.text = "Correct!  Keep it up!";
-//     brkEl.appendChild(msgEl);
-//     quizCntr.appendChild(brkEl);
-// }
 function addTime(){
     timeRemaining += 10;
 };

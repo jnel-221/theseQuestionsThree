@@ -6,7 +6,7 @@ Test your knowledge of Javascript fundementals with this short and deceptively e
 
 ## Resources
 
-This application utilizes HTML, CSS, and is dynamically powered by Javascript. Background image is courtesy of unsplash.com, photo credit to Ferenc Almasi. Fonts supplied by Google Fonts. A special thanks to my TAs for providing documentation assisting with array methods. Last but not least, thank you to those posting questions and answers on StackOverflow, a great resource for both finding new documentation, but also for seeing new ways to think through problems.
+This application utilizes HTML, CSS, and is dynamically powered by Javascript. Background image is courtesy of unsplash.com, photo credit to Ferenc Almasi. Fonts supplied by Google Fonts. A special thanks to my TAs for providing documentation assisting with array methods. Thanks also to those posting questions and answers on StackOverflow, a great resource for finding new documentation and seeing new ways to think through problems. Finally a shout out to James Q Quick, whose youTube videos were a help with some tricky logic.
 
 ## For Development
 
